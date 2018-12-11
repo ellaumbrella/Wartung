@@ -5,3 +5,5 @@ from django.contrib import admin
 from .models import Wartungen
 
 admin.site.register(Wartungen)
+
+#hallo
