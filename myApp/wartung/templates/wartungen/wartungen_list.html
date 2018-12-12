@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1> Wartungs-Liste</h1>
+  {% if wartungen_list %}
+  <ul>
+    {% for wartung in wartungen_list %}
+      <li>
+        <a href="{{ wartungen.get_absolute_url }}">{{ wartung.title }}</a> ({{wartung.author}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Es sind keine Wartungen eingestellt.</p>
+  {% endif %}
+{% endblock %}

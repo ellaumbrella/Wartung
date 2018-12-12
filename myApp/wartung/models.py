@@ -14,20 +14,7 @@ class Wartungen(models.Model):
 	endzeit = models.DateTimeField('endet:')
 
 
-#	def __init__(self, wartung, startzeit, endzeit):
-#		self.w = wartung
-#		self.s = startzeit
-#		self.e = endzeit
 
-#	def get_text(self):
-#		return self.text
-
-#	def get_startzeit(self):
-#		return self.startzeit
-
-
-#	def get_endzeit(self):
-#		return self.endzeit
 
 	pub_date = models.DateTimeField(editable=False)
 
@@ -39,5 +26,7 @@ class Wartungen(models.Model):
 
 	def __str__(self):
 		return self.wartungen_text
+
+
 
 
