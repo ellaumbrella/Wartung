@@ -6,7 +6,7 @@
   <ul>
     {% for wartung in wartungen_list %}
       <li>
-        <a href="{{ wartungen.get_absolute_url }}"></a>
+        <a href="{{ wartungen.get_absolute_url }}"> {{ wartung.wartungen_text }} </a> {{ wartung.startzeit }} {{ wartung.endzeit }}
       </li>
     {% endfor %}
   </ul>

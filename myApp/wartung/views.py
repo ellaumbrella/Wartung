@@ -17,19 +17,13 @@ def index(request):
 	return render(request, 'index.html', context=context)
 
 
-def wartungenlist(request):
-	#wartung_list = Wartungen.objects.all().count()
-	w = loader.get_template('wartungen/wartungen_list.html')
+class WartungenListView(generic.ListView):
 
-	return render
+	context_object_name = 'wartungen_list'
+	template_name = 'wartungen/wartungen_list.html'
 
-# class WartungenListView(generic.ListView):
-# 	model = Wartungen
-# 	context_object_name = 'Wartungsliste'
-# 	template_name = 'wartungen/wartungen_list'
-#
-# 	def get_queryset(self):
-# 		return Wartungen.objects.all()
+	def get_queryset(self):
+				return Wartungen.objects.all()
 #
 #
 # 	#def get_context_data(self, **kwargs):
