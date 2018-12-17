@@ -8,8 +8,9 @@ from django import forms
 # Create your models here.
 
 class Wartungen(models.Model):
+	wartungen_name = models.CharField(max_length=50, verbose_name='Wartungsname')
 	wartungen_text = models.TextField(max_length=200, verbose_name='Wartungstext')
-
+	domain = models.CharField(max_length=100, verbose_name='Domain')
 	startzeit = models.DateTimeField('beginnt:')
 	endzeit = models.DateTimeField('endet:')
 

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from wartung.models import Wartungen
 from django.shortcuts import render
 from django.views import generic
+from django.views.generic.edit import CreateView
 from django.template.loader import get_template
 
 
@@ -39,3 +40,9 @@ class WartungenDetailView(generic.DetailView):
 			raise Http404('Es existieren keine Wartungen')
 
 		return render(request, 'wartungen/wartungen_detail.html', context=context)
+
+class WartungenCreate(CreateView):
+
+	template_name = 'wartungen/wartungen_form.html'
+	model = Wartungen
+	fields = ['wartungen_name','wartungen_text', 'domain', 'startzeit', 'endzeit']

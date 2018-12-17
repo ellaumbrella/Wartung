@@ -1,9 +1,10 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Title: Wartnugsdetail </h1>
+  <h1>Title: {{ wartungen.wartungen_name }} </h1>
 
   <p><strong>Wartungstext:</strong> <a>{{ wartungen.wartungen_text }}</a></p> <!-- author detail link not yet defined -->
+  <p><strong>Wartungsdomain:</strong> <a>{{ wartungen.domain }}</a></p>
   <p><strong>Von:</strong> {{ wartungen.startzeit }}</p>
   <p><strong>Bis:</strong> {{ wartungen.endzeit }}</p>
 
