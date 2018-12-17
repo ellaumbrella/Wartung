@@ -24,21 +24,18 @@ class WartungenListView(generic.ListView):
 
 	def get_queryset(self):
 				return Wartungen.objects.all()
-#
-#
-# 	#def get_context_data(self, **kwargs):
-# 		# Call the base implementation first to get the context
-# 	#	context = super(WartungenListView, self).get_context_data(**kwargs)
-# 		# Create any data and add it to the context
-# 	#	context['some_data'] = 'This is just some data'
-# 	#	return context
-# class WartungenDetailView(generic.DetailView):
-# 	model = Wartungen
-#
-# 	def wartung_detail_view(request, primary_key):
-# 		try:
-# 			wartungen = Wartungen.objects.get(pk=primary_key)
-# 		except Book.DoesNotExist:
-# 			raise Http404('Es existieren keine Wartungen')
-#
-# 		return render(request, 'wartung/wartungen_detail.html', context={'Wartung': wartungen})
+
+class WartungenDetailView(generic.DetailView):
+	model = Wartungen
+	template_name = 'wartungen/wartungen_detail.html'
+
+	def wartung_detail_view(request, primary_key):
+		try:
+			wartungen = Wartungen.objects.get(pk=primary_key)
+			context = {
+				'Wartung': wartungen,
+			}
+		except Wartungen.DoesNotExist:
+			raise Http404('Es existieren keine Wartungen')
+
+		return render(request, 'wartungen/wartungen_detail.html', context=context)
