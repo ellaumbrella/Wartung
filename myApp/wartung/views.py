@@ -1,10 +1,11 @@
 
 from django.http import HttpResponse
-from wartung.models import Wartungen
+from .models import Wartungen
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic.edit import CreateView
 from django.template.loader import get_template
+from bootstrap_datepicker_plus import DateTimePickerInput
 
 
 # Create your views here.
@@ -46,3 +47,8 @@ class WartungenCreate(CreateView):
 	template_name = 'wartungen/wartungen_form.html'
 	model = Wartungen
 	fields = ['wartungen_name','wartungen_text', 'domain', 'startzeit', 'endzeit']
+	def get_form(self):
+		form = super().get_form()
+		form.fields['startzeit'].widget = DateTimePickerInput()
+		form.fields['endzeit'].widget = DateTimePickerInput()
+		return form
