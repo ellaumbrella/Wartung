@@ -15,19 +15,19 @@ class Wartungen(models.Model):
 	startzeit = models.DateTimeField('beginnt:', null=True)
 	endzeit = models.DateTimeField('endet:', null=True)
 
-	#pub_date = models.DateTimeField(editable=False)
+	pub_date = models.DateTimeField()
 
 	def save(self, *args, **kwargs):
 		if not self.id:
 			self.created = timezone.now()
-
+			self.pub_date = timezone.now()
 		return super(Wartungen, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return self.wartungen_text
 
 	def get_absolute_url(self):
-		return reverse('Wartungen-create', kwargs={'pk': self.pk})
+		return reverse('Wartungen')
 
 
 
